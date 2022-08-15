@@ -1192,3 +1192,14 @@ variable "putin_khuylo" {
   type        = bool
   default     = true
 }
+
+
+
+################################################################################
+# custom
+################################################################################
+variable "private_route_table_routes" {
+  description = "Configuration block of private routes."
+  type        = list(map(string))
+  default     = []
+}
