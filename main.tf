@@ -1066,10 +1066,7 @@ resource "aws_route" "private_ipv6_egress" {
 ################################################################################
 
 resource "aws_route_table_association" "private" {
-  count = local.create_vpc && length(var.private_subnets) > 0 ? length(var.private_subnets) : 0
-  lifecycle {
-    ignore_changes = all
-  }
+  count = var.private_route_table_ignore_association ? 0 : local.create_vpc && length(var.private_subnets) > 0 ? length(var.private_subnets) : 0
 
   subnet_id = element(aws_subnet.private[*].id, count.index)
   route_table_id = element(

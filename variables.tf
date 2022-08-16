@@ -1203,3 +1203,9 @@ variable "private_route_table_routes" {
   type        = list(map(string))
   default     = []
 }
+
+variable "private_route_table_ignore_association" {
+  description = "Configuration block of private routes."
+  type        = bool
+  default     = false
+}
